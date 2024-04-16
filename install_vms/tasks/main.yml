@@ -1,0 +1,30 @@
+---
+# tasks file for install_vms
+  - name: deploy VMs
+    local_action:
+      module: vmware_guest
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      validate_certs: False
+      datacenter: Datacenter
+      datastore: datastore_6TB
+      folder: otus_postgresql
+      template: t_centos8
+      name: "{{item.name}}"
+      hardware:
+        nested_virt: true
+        memory_mb: "{{item.memory_mb}}"
+      networks:
+        - name: VMs11
+          ip: "{{item.ip}}"
+          netmask: "255.255.255.0"
+          gateway: "10.100.11.254"
+      customization:
+        hostname: "{{item.hostname}}"
+        dns_servers: [8.8.8.8]
+      state: powered-on
+      wait_for_ip_address: true
+    with_items: "{{servers}}"
+    register: deploy
+    delegate_to: localhost

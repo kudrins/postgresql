@@ -1,0 +1,9 @@
+# defaults file for install_postgres
+[all:vars]
+ansible_user=root
+ansible_ssh_pass=Ingenico-123
+
+[servers]
+node1 ansible_host=10.100.11.116 
+node2 ansible_host=10.100.11.117 
+barman ansible_host=10.100.11.118

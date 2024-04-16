@@ -1,0 +1,11 @@
+---
+# vars file for install_vms
+vcenter_hostname: 10.100.10.1
+vcenter_username: administrator@vsphere.local
+vcenter_password: password
+
+servers:
+  - { name: node1,  memory_mb: 2048, ip: 10.100.11.116, hostname: node1 }
+  - { name: node2,  memory_mb: 2048, ip: 10.100.11.117, hostname: node2 }
+  - { name: barman, memory_mb: 2048, ip: 10.100.11.118, hostname: barman }
+

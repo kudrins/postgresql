@@ -1,0 +1,19 @@
+[barman]
+#directory in which backups are stored
+barman_home = /var/lib/barman
+#directory where backup configuration files are stored
+configuration_files_directory = /etc/barman.d
+#the user who runs barman
+barman_user = barman
+#location of the log file
+log_file = /var/log/barman/barman.log
+#Compression type used
+compression = gzip
+#Backup method used
+backup_method = rsync
+archiver = on
+retention_policy = REDUNDANCY 3
+immediate_checkpoint = true
+#Archive depth
+last_backup_maximum_age = 4 DAYS
+minimum_redundancy = 1
